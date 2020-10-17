@@ -1,0 +1,60 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+	My blog
+{% endblock title %}
+
+{% block section-class %}
+	main-content-w3layouts-agileits
+{% endblock section-class %}
+{% block heading %}
+	<h3 class="tittle">Blog Posts</h3>
+{% endblock heading %}
+
+{% block div-row %}
+	inner-sec
+{% endblock div-row %}
+
+{% block content %}
+		{% if tag %}
+			<div class="alert alert-primary text-center" role="alert">
+			Posts tagged With <strong>"{{ tag.name }}"</strong>
+		</div>
+		{% endif %}
+	<div class="row mb-4">
+			
+		{% for post in posts %}
+			<div class="col-md-6 card">
+				{% if post.image %}
+					<a href="{{ post.get_absolute_url }}">
+						<img src="{{ post.image.url }}" class="card-img-top img-fluid" alt="">
+					</a>
+				{% endif %}
+				<div class="card-body">
+					<ul class="blog-icons my-4">
+						<li>
+							<a href="#">
+								<i class="far fa-calendar-alt"></i> {{ post.publish }}</a>
+						</li>
+						<li class="mx-2">
+							<a href="#">
+								<i class="far fa-comment"></i> {{ post.comments.count }}</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fas fa-eye"></i> 2000</a>
+						</li>
+
+					</ul>
+					<h5 class="card-title ">
+						<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+					</h5>
+					<p class="card-text mb-3">{{ post.body|truncatewords:"13"|linebreaks }}</p>
+					<a href="{{ post.get_absolute_url }}" class="btn btn-primary read-m">Read More</a>
+				</div>
+			</div>
+		{% endfor %}
+		
+	</div>
+	{% include "pagination.html" with page=posts only %}
+{% endblock content %}

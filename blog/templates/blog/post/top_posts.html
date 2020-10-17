@@ -1,0 +1,18 @@
+{% for post in top_stories %}
+	<div class="col-md-5 blog-grid-left">
+		<a href="{{ post.get_absolute_url }}">
+			<img src="images/1.jpg" class="img-fluid" alt="">
+		</a>
+	</div>
+	<div class="col-md-7 blog-grid-right">
+
+		<h5>
+			<a href="{{ post.get_absolute_url }}">{{ post.title }} </a>
+		</h5>
+		<div class="sub-meta">
+			<span>
+				<i class="far fa-clock"></i> {{ post.publish }}</span>
+		</div>
+	</div>				 																					
+
+{% endfor %}

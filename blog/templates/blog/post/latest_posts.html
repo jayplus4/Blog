@@ -1,0 +1,17 @@
+
+{% for post in latest_posts %}
+	<div class="blog-grid-left">
+		<a href="single.html">
+			<img src="" class="img-fluid" alt="">
+		</a>
+	</div>
+	<div class="blog-grid-right">
+
+		<h5>
+			<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+		</h5>
+	</div>
+	<div class="clearfix"> </div>
+{% endfor %}
+
+

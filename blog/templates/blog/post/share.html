@@ -1,0 +1,40 @@
+{% extends "blog/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+	Share a Post
+{% endblock title %}
+
+{% block content %}
+	{% if sent %}
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-4">E-mail successfully sent</h1>
+				<p class="lead">
+					"{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
+				</p>
+			</div>
+		</div>
+		
+	{% else %}
+		<h1>Share "{{ post.title }}" by e-mail</h1>
+		<form method="post" action=".">
+			{% csrf_token %}
+			{% for field in email_form %}
+				<div class="form-group">
+					<label for="{{ field.id_for_label }}">{{ field.label }}</label>
+					{% render_field field|add_class:"form-control" placeholder=field.label %}
+					<!-- {{ field.label }}
+					{% if field.label == "Comments" %}
+						<textarea class="form-control" rows="3" name="{{ field.name }}"></textarea>
+					{% else %}
+
+						<input type="text" class="form-control" name="{{ field.name }}">
+					{% endif %} -->
+					
+				</div>
+			{% endfor %}
+			<input type="submit" class="btn btn-success btn-lg" value="Send E-mail">
+		</form>
+	{% endif %}
+{% endblock content %}
