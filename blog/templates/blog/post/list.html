@@ -49,7 +49,7 @@
 					<h5 class="card-title ">
 						<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
 					</h5>
-					<p class="card-text mb-3">{{ post.body|truncatewords:"13"|linebreaks }}</p>
+					<p class="card-text mb-3">{{ post.body|truncatewords_html:"13"|safe|linebreaks }}</p>
 					<a href="{{ post.get_absolute_url }}" class="btn btn-primary read-m">Read More</a>
 				</div>
 			</div>

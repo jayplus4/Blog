@@ -20,7 +20,7 @@
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">{{ post.title }}</h5>
-				<p class="card-text">{{ post.body }}</p>
+				<p class="card-text">{{ post.body|safe }}</p>
 				<h4><a href="{% url 'blog:post_share' post.id %}">Share this Post</a></h4>
 			</div>
 		</div>
