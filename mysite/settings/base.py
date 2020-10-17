@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'widget_tweaks',
     'taggit',
+    "ckeditor",
+    "ckeditor_uploader",
 ]
 
 MIDDLEWARE = [
@@ -118,9 +120,17 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_HOST_USER = 'taiwogabrielsamuel@gmail.com'
 # EMAIL_HOST_PASSWORD = 'lkhgutydfuyikliyuj[po78uj'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full'
+    },
+}
